@@ -30,6 +30,7 @@ module seven_segs_decoder ( input [4:0] digit, output reg [6:0] seg );
             5'd21: seg = 7'b1000000; // O (same as 0)
             5'd22: seg = 7'b0001001; // H (for K approximation)
             5'd23: seg = 7'b1111111; // blank
+            5'd24: seg = 7'b0010010; // S (same as 5)
 
             default: seg = 7'b1111111; // blank
         endcase

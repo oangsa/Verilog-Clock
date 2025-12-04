@@ -8,6 +8,8 @@ module sevenseg_display_driver ( input clk, input reset, input tick_scan, input 
     localparam CHAR_O = 5'd21;
     localparam CHAR_H = 5'd22;
     localparam CHAR_BLANK = 5'd23;
+    localparam CHAR_S = 5'd24;
+    localparam CHAR_A = 5'ha;
     localparam CHAR_d = 5'hd;
     localparam CHAR_E = 5'he;
 
@@ -55,12 +57,12 @@ module sevenseg_display_driver ( input clk, input reset, input tick_scan, input 
 
         // Handle text display modes using decoder character codes
         if (show_pwd) begin
-            // Display "Pd " - P d (Password)
+            // Display "PASS" (Password)
             case (digit_sel)
-                2'd0: begin current_digit = CHAR_d; an_reg = 4'b1110; end
-                2'd1: begin current_digit = CHAR_BLANK; an_reg = 4'b1111; end
-                2'd2: begin current_digit = CHAR_P; an_reg = 4'b1011; end
-                2'd3: begin current_digit = CHAR_BLANK; an_reg = 4'b1111; end
+                2'd0: begin current_digit = CHAR_S; an_reg = 4'b1110; end
+                2'd1: begin current_digit = CHAR_S; an_reg = 4'b1101; end
+                2'd2: begin current_digit = CHAR_A; an_reg = 4'b1011; end
+                2'd3: begin current_digit = CHAR_P; an_reg = 4'b0111; end
             endcase
         end else if (show_ok) begin
             // Display "OK"
